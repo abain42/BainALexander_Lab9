@@ -31,7 +31,7 @@ rho[(x >= -300) & (x <= 0)] = rho_max    # Max density in the square pulse
 
 rho[int(N/2)] = rho_max/2   # Try running without this line
 #based on some thought (and googling), I think this is supposed to create a smoother transition from the abrupt change of density at
-#x = 0 to x->0+ from rho max to 0, but it doesn't seem to visually change the graphs at all
+#x = 0 to x->0+ from rho max to 0,by adding rho = rhomax/2 at x == 0. However, it doesn't seem to visually change the graphs at all
 
 # Use periodic boundary conditions
 ip = np.arange(N) + 1  
@@ -73,3 +73,11 @@ plt.ylabel('time')
 plt.title('Density contours')
 plt.show()
 
+times = [0,250,500,750,1000,1250,1500]
+for z in times:
+    plt.plot(xplot, rplot[:,z], label ="t={t}")
+plt.xlabel('Position x')
+plt.ylabel('Density rho(x, t)')
+plt.legend()
+plt.title('Density Snapshot at Different Times')
+plt.show()
