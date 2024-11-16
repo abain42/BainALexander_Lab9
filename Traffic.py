@@ -17,16 +17,16 @@ tau = h/v_max
 print('Last car starts moving after ', (L/4)/(v_max*tau), 'steps')
 nstep = 1500
 coeff = tau/(2*h)          # Coefficient used by all schemes
-
+xgrid = np.linspace(-600,600,N)
 
 #* Set initial and boundary conditions
 rho_max = 1.0                   # Maximum density
 Flow_max = 0.25*rho_max*v_max   # Maximum Flow
 Flow = np.empty(N)
 cp = np.empty(N);  cm = np.empty(N)
-# Initial condition is a square pulse from x = -L/4 to x = 0
+# Initial condition is a square pulse from x = -300 to x = 0
 rho = np.zeros(N)
-for i in range(int(N/4),int(N/2)) :
+for i in range(-300,1) :
     rho[i] = rho_max     # Max density in the square pulse
 
 rho[int(N/2)] = rho_max/2   # Try running without this line
