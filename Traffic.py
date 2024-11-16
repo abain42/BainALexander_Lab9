@@ -30,6 +30,8 @@ for i in range(-300,1) :
     rho[i] = rho_max     # Max density in the square pulse
 
 rho[int(N/2)] = rho_max/2   # Try running without this line
+#based on some thought (and googling), I think this is supposed to create a smoother transition from the abrupt change of density at
+#x = 0 to x->0+ from rho max to 0, but it doesn't seem to visually change the graphs at all
 
 # Use periodic boundary conditions
 ip = np.arange(N) + 1  
