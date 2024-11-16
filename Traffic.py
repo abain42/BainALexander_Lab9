@@ -75,7 +75,7 @@ plt.show()
 
 times = [0,250,500,750,1000,1250,1500]
 for z in times:
-    plt.plot(xplot, rplot[:,z], label ="t={t}")
+    plt.plot(xplot, rplot[:,z], label =f't={z}')
 plt.xlabel('Position x')
 plt.ylabel('Density rho(x, t)')
 plt.legend()
