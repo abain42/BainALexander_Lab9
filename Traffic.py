@@ -64,22 +64,6 @@ for istep in range(nstep) :
     tplot[iplot] = tau*(istep+1)
     iplot += 1
 
-
-#* Graph density versus position and time as wire-mesh plot
-from matplotlib import cm
-from mpl_toolkits.mplot3d import Axes3D
-
-fig = plt.figure()
-ax = fig.add_subplot(projection='3d')
-Tp, Xp = np.meshgrid(tplot[0:iplot], xplot)
-ax.plot_surface(Tp, Xp, rplot[:,0:iplot], rstride=1, cstride=1, cmap=cm.gray)
-ax.view_init(elev=30., azim=10.)
-ax.set_xlabel('t')
-ax.set_ylabel('x')
-ax.set_zlabel('rho')
-ax.set_title('Density versus position and time')
-plt.show()
-
 #* Graph contours of density versus position and time.
 levels = np.linspace(0., 1., num=11) 
 ct = plt.contour(xplot, tplot, np.flipud(np.rot90(rplot)), levels) 
