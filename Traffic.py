@@ -81,3 +81,9 @@ plt.ylabel('Density rho(x, t)')
 plt.legend()
 plt.title('Density Snapshot at Different Times')
 plt.show()
+
+### ANSWER TO QUESTION ###
+#yes a shock form does appear it occurs at x = 0+ and is because 
+#of the abrupt change in density from x = 0 to x > 0 
+#the equation put in above was supposed to smooth it out but it 
+#seems to have no effect on the appearance of the graphs when commented out
