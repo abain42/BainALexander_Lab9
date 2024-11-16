@@ -1,6 +1,9 @@
 # traffic - Program to solve the generalized Burger  
 # equation for the traffic at a stop light problem
 
+### GITHUB link:###
+# https://github.com/abain42/BainALexander_Lab9
+
 # Set up configuration options and special features
 import numpy as np
 import matplotlib.pyplot as plt
