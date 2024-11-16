@@ -17,7 +17,7 @@ tau = h/v_max
 print('Last car starts moving after ', (L/4)/(v_max*tau), 'steps')
 nstep = 1500
 coeff = tau/(2*h)          # Coefficient used by all schemes
-coefflw = tau**2/(2*h**2)  # Coefficient used by Lax-Wendroff
+
 
 #* Set initial and boundary conditions
 rho_max = 1.0                   # Maximum density
@@ -52,17 +52,10 @@ for istep in range(nstep) :
     #* Compute the flow = (Density)*(Velocity)
     Flow[:] = rho[:] * (v_max*(1 - rho[:]/rho_max))
   
-    #* Compute new values of density using  
-    #  FTCS, Lax or Lax-Wendroff method.
-    if method == 1 :      ### FTCS method ###
-        rho[:] = rho[:] - coeff*( Flow[ip] - Flow[im] )
-    elif method == 2 :    ### Lax method ###
-        rho[:] = .5*( rho[ip] + rho[im] ) - coeff*( Flow[ip] - Flow[im] )
-    else :                ### Lax-Wendroff method ###
-        cp[:] = v_max*(1 - (rho[ip]+rho[:])/rho_max);
-        cm[:] = v_max*(1 - (rho[:]+rho[im])/rho_max);
-        rho[:] = rho[:] - coeff*( Flow[ip] - Flow[im] ) + coefflw*(
-            cp[:]*(Flow[ip]-Flow[:]) - cm[:]*(Flow[:]-Flow[im]) )
+    #* Compute new values of density using Lax method: 
+     
+    rho[:] = .5*( rho[ip] + rho[im] ) - coeff*( Flow[ip] - Flow[im] )
+    
 
     #* Record density for plotting.
     rplot[:,iplot] = np.copy(rho)
